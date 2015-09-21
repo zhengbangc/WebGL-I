@@ -18,6 +18,7 @@ var transformVec = vec3.create();
 var scaleVec = vec3.create();
 vec3.set(transformVec,0.0,0.0,-2.0);
 var rad = 0;
+var danceIndex = 0.00;
 
 
 
@@ -128,7 +129,9 @@ function setupShaders() {
 function setupBuffers() {
   vertexPositionBuffer = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, vertexPositionBuffer);
-  var triangleVertices = [
+  
+  if(document.getElementById("dance").value == "no_dancing")
+    var triangleVertices = [
           -0.5,   0.75,   0.0,
           -0.5,   0.5,    0.0,
           -0.25,  0.5,    0.0, //1
@@ -160,7 +163,108 @@ function setupBuffers() {
            0.5,   -0.75,  0.0,
            0.25,   -0.5,   0.0 //10
   ];
-    
+
+  else {
+        if (danceIndex % 2 < 0.33)
+        var triangleVertices = [
+              -0.5,   0.75,   0.0,
+              -0.5,   0.5,    0.0,
+              -0.25,  0.5,    0.0, //1
+              -0.5,   0.75,   0.0,
+              -0.25,  0.5,    0.0,
+               0.5,   0.75,   0.0, //2
+              -0.25,  0.5,    0.0,
+               0.25,  0.5,    0.0,
+               0.5,   0.75,   0.0, //3
+               0.5,   0.75,   0.0,
+               0.25,  0.5,    0.0,
+               0.5,   0.5,    0.0, //4
+              -0.25,  0.5,    0.0,
+               0.25,  -0.5,   0.0,
+               0.25,  0.5,    0.0, //5
+              -0.25,  0.5,    0.0,
+              -0.25, -0.5,    0.0,
+               0.25, -0.5,    0.0, //6
+              -0.25, -0.5,    0.0,
+              -0.5,  -0.5,    0.0,
+              -0.5,  -0.75,   0.0, //7
+              -0.25, -0.5,    0.0,
+              -0.5,  -0.75,   0.0,
+               0.5,   -0.75,  0.0, //8
+               0.25,  -0.5,   0.0,
+               0.5,   -0.75,  0.0,
+               0.5,   -0.5,   0.0, //9
+               -0.25,  -0.5,   0.0,
+               0.5,   -0.75,  0.0,
+               0.25,   -0.5,   0.0 //10
+        ];
+        else if (danceIndex % 2 >= 0.33  && danceIndex %2<=0.67)
+            var triangleVertices = [
+                -0.6,   0.80,   0.0,
+                -0.5,   0.5,    0.0,
+                -0.2,  0.55,    0.0, //1
+                -0.6,   0.80,   0.0,
+                -0.2,  0.55,    0.0,
+                 0.6,   0.8,   0.0, //2
+                -0.2,  0.55,    0.0,
+                 0.2,  0.55,    0.0,
+                 0.6,   0.8,   0.0, //3
+                 0.6,   0.8,   0.0,
+                 0.2,  0.55,    0.0,
+                 0.5,   0.5,    0.0, //4
+                -0.2,  0.55,    0.0,
+                 0.2,  -0.55,   0.0,
+                 0.2,  0.55,    0.0, //5
+                -0.2,  0.55,    0.0,
+                -0.2, -0.55,    0.0,
+                 0.2,  -0.55,   0.0, //6
+                -0.2, -0.55,    0.0,
+                -0.5,  -0.5,    0.0,
+                -0.6,  -0.80,   0.0, //7
+                -0.2, -0.55,    0.0,
+                -0.6,  -0.80,   0.0,
+                 0.6,   -0.80,  0.0, //8
+                 0.2,  -0.55,   0.0,
+                 0.6,   -0.80,  0.0,
+                 0.5,   -0.5,   0.0, //9
+                 -0.2, -0.55,    0.0,
+                 0.6,   -0.80,  0.0,
+                 0.2,  -0.55,   0.0,//10
+        ];
+        else 
+          var triangleVertices = [
+                -0.7,   0.80,   0.0,
+                -0.5,   0.5,    0.0,
+                -0.2,  0.55,    0.0, //1
+                -0.7,   0.80,   0.0,
+                -0.2,  0.55,    0.0,
+                 0.7,   0.8,   0.0, //2
+                -0.2,  0.55,    0.0,
+                 0.2,  0.55,    0.0,
+                 0.7,   0.8,   0.0, //3
+                 0.7,   0.8,   0.0,
+                 0.2,  0.55,    0.0,
+                 0.5,   0.5,    0.0, //4
+                -0.2,  0.55,    0.0,
+                 0.2,  -0.55,   0.0,
+                 0.2,  0.55,    0.0, //5
+                -0.2,  0.55,    0.0,
+                -0.2, -0.55,    0.0,
+                 0.2,  -0.55,   0.0, //6
+                -0.2, -0.55,    0.0,
+                -0.5,  -0.5,    0.0,
+                -0.7,  -0.85,   0.0, //7
+                -0.2, -0.55,    0.0,
+                -0.7,  -0.85,   0.0,
+                 0.7,   -0.85,  0.0, //8
+                 0.2,  -0.55,   0.0,
+                 0.7,   -0.85,  0.0,
+                 0.5,   -0.5,   0.0, //9
+                 -0.2, -0.55,    0.0,
+                 0.7,   -0.85,  0.0,
+                 0.2,  -0.55,   0.0,//10
+        ];
+      }
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(triangleVertices), gl.STATIC_DRAW);
   vertexPositionBuffer.itemSize = 3;
   vertexPositionBuffer.numberOfItems = 30;
@@ -253,10 +357,9 @@ function draw() {
             vec3.set(transformVec,Math.sin(rad/10),Math.cos(rad/10),-1); //set up transformVec value
             mat4.translate(mvMatrix, mvMatrix,transformVec); //change the mvMatrix to change the vertices
            mat4.perspective(pMatrix,degToRad(140), 1 , 0.1, 100.0); //setting up perspective attributes
-           mat4.rotateX(mvMatrix, mvMatrix, degToRad(rotAngle * 8));  //rotate regarding to the X axis by 8*rotAngle per frame
+           mat4.rotateX(mvMatrix, mvMatrix, degToRad(rotAngle * 2));  //rotate regarding to the X axis by 8*rotAngle per frame
       //mat4.rotateZ(mvMatrix, mvMatrix, degToRad(rotAngle)); //rotate regarding to the Y axis by rotAngle per frame
-           mat4.rotateY(mvMatrix, mvMatrix, degToRad(rotAngle * 4)); //rotate regarding to the Y axis by rotAngle*4 per frame
-           vec3.set(scaleVec, rad, rad*2);
+           mat4.rotateY(mvMatrix, mvMatrix, degToRad(rotAngle * 2)); //rotate regarding to the Y axis by rotAngle*4 per frame
       }
       else if(document.getElementById("effects").value == "drawing_eight")
       {     
@@ -264,10 +367,9 @@ function draw() {
           vec3.set(transformVec,Math.sin(rad/2),Math.cos(rad/10),-1); //set up transformVec value
           mat4.translate(mvMatrix, mvMatrix,transformVec); //change the mvMatrix to change the vertices
            mat4.perspective(pMatrix,degToRad(140), 1 , 0.1, 100.0); //setting up perspective attributes
-           mat4.rotateX(mvMatrix, mvMatrix, degToRad(rotAngle * 8));  //rotate regarding to the X axis by 8*rotAngle per frame
+           mat4.rotateX(mvMatrix, mvMatrix, degToRad(rotAngle * 4));  //rotate regarding to the X axis by 8*rotAngle per frame
       //mat4.rotateZ(mvMatrix, mvMatrix, degToRad(rotAngle)); //rotate regarding to the Y axis by rotAngle per frame
            mat4.rotateY(mvMatrix, mvMatrix, degToRad(rotAngle * 4)); //rotate regarding to the Y axis by rotAngle*4 per frame
-           vec3.set(scaleVec, rad, rad*2);
       }
       else if (document.getElementById("effects").value == "no_animation")
       {
@@ -276,13 +378,12 @@ function draw() {
       else if (document.getElementById("effects").value == "wave")
       {
           vec3.set(transformVec,0.0,0.0,-2.0);
-          vec3.set(transformVec,Math.tan(rad/10) + Math.sin(rad/5),Math.cos(rad/10),-1); //set up transformVec value
+          vec3.set(transformVec,Math.tan(rad/10) + Math.sin(rad/5),Math.tan(rad/10) + Math.sin(rad/5),-1); //set up transformVec value
           mat4.translate(mvMatrix, mvMatrix,transformVec); //change the mvMatrix to change the vertices
           mat4.perspective(pMatrix,degToRad(140), 1 , 0.1, 100.0); //setting up perspective attributes
           //mat4.rotateX(mvMatrix, mvMatrix, degToRad(rotAngle * 8));  //rotate regarding to the X axis by 8*rotAngle per frame
-          mat4.rotateZ(mvMatrix, mvMatrix, degToRad(rotAngle*4)); //rotate regarding to the Y axis by rotAngle per frame
-          mat4.rotateY(mvMatrix, mvMatrix, degToRad(rotAngle * 4)); //rotate regarding to the Y axis by rotAngle*4 per frame
-          vec3.set(scaleVec, rad, rad*2);
+          mat4.rotateZ(mvMatrix, mvMatrix, degToRad(rotAngle*2)); //rotate regarding to the Y axis by rotAngle per frame
+          //mat4.rotateY(mvMatrix, mvMatrix, degToRad(rotAngle * 4)); //rotate regarding to the Y axis by rotAngle*4 per frame
       }
       //mat4.scale(mvMatrix, mvMatrix, scaleVec );
   //}
@@ -304,6 +405,7 @@ function draw() {
 function animate() {
     rad = rad + 0.1;
     var timeNow = new Date().getTime();
+    danceIndex = danceIndex+0.1;
     if (lastTime != 0) {
         var elapsed = timeNow - lastTime;
         
