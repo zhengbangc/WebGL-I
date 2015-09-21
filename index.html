@@ -1,0 +1,61 @@
+<!DOCTYPE HTML> 
+<html lang="en"> 
+<head>
+<title>Hello Projection</title>
+<meta charset="utf-8"> 
+</head>
+
+         
+   
+<script id="shader-vs" type="x-shader/x-vertex">
+   attribute vec3 aVertexPosition; //change at most once per vertex
+   attribute vec4 aVertexColor;
+
+    uniform mat4 uMVMatrix; //are constant for an entire primitive
+    uniform mat4 uPMatrix;
+    varying vec4 vColor;
+
+    void main(void) {
+        gl_Position = uPMatrix*uMVMatrix*vec4(aVertexPosition, 1.0);
+        vColor = aVertexColor;
+    }
+</script>
+  
+<script id="shader-fs" type="x-shader/x-fragment">
+precision mediump float;
+varying vec4 vColor;
+void main(void) {
+        gl_FragColor = vColor;
+ }
+</script>
+
+<script src="gl-matrix-min.js"></script> 
+<script type="text/javascript" src="webgl-utils.js"></script>
+<script src="HelloProjection.js"></script>   
+<body onload="startup();">
+    <form id="input_form">
+        <fieldset>
+        <legend>Visualization Parameters</legend>
+         <!--Projection
+         <input type="radio" name="projection" id="perspective" value="perspective"checked > Perspective
+         <input type="radio" name="projection" id="ortho" value="ortho"> Orthographic<br>-->
+         
+        <input type="radio" name="projection" id="wireframe-off" value="wireframe-off"checked>wireframe-off 
+        <input type="radio" name="projection" id="wireframe-on" value="wireframe-on">  wireframe-on<br>
+        <p> Please select an animation effect below </p>
+        <!--<input type="checkbox" name="projection" id="circle" value="circle">circle path <br>
+        <input type="checkbox" name="projection" id="drawing_eight" value="drawing_eight">"8" path <br>-->
+        <select name ="effects" id="effects">
+            <option value = "no_animation" defaultSelected> No Animation</option>
+            <option value = "circle">Circle</option>
+            <option value = "drawing_eight"> Swinging Left & Right</option>
+            <option value = "wave"> Wave</option>
+
+        </select>
+
+        </fieldset>
+        </form>
+  <canvas id="myGLCanvas" width="600" height="600"></canvas>
+</body>
+
+</html>
