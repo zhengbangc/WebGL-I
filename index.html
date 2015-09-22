@@ -39,7 +39,7 @@ void main(void) {
          <!--Projection
          <input type="radio" name="projection" id="perspective" value="perspective"checked > Perspective
          <input type="radio" name="projection" id="ortho" value="ortho"> Orthographic<br>-->
-         
+         <p> Please select whether the wireframs should be visible </p>
         <input type="radio" name="projection" id="wireframe-off" value="wireframe-off"checked>wireframe-off 
         <input type="radio" name="projection" id="wireframe-on" value="wireframe-on">  wireframe-on<br>
         <p> Please select an rotating and translating animation effect below </p>
@@ -55,6 +55,12 @@ void main(void) {
         <select name="dance" id="dance">
              <option value="no_dancing" > No Dancing </option>  
             <option value="yes_dancing"> Dancing </option>
+        </select>
+        <p> Please select a color schema </p>
+        <select name="color_scheme" id="color_scheme">
+            <option value = "gradient"> Gradient </option>
+            <option value = "blinking"> Blinking </option>
+
         </select>
 
         </fieldset>
